@@ -89,7 +89,8 @@ export class DefaultAddSkillsComponent implements OnInit, OnDestroy {
   }
 
   onChange(isPractice: boolean, code: any) {
-    const promise = isPractice ? this.service.getCategories() : this.service.getTechStacks(code);
+    const promise = isPractice ? this.service.getCategories() : this.service.getTechStacks(code,
+      this.skillsForm.controls['practice'].value);
     setTimeout(() => {
       this.addSkillsWrapperService.updateShowLoaderStream(false);
       this.subscriptions.push(

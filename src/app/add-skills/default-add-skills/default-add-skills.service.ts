@@ -21,10 +21,10 @@ export class DefaultAddSkillsService {
   getExperts() {
     return of(this.expertLevels);
   }
-  getTechStacks(c: string) {
+  getTechStacks(c: string, p: string) {
     let filteredList: Ilookup[] = [];
     if (this.techStacks) {
-      filteredList = this.techStacks.filter(el => el.cc === c);
+      filteredList = this.techStacks.filter(el => el.cc === c && el.pc === p);
     }
     return of(filteredList.length ? filteredList : []);
   }

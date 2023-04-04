@@ -1,0 +1,102 @@
+.search-add-skills {
+  font-size: 12px;
+  margin-top: 1rem;
+}
+
+.search-add-skills .result-box {
+  border-left: 1px solid rgb(90, 90, 90);
+  border-right: 1px solid rgb(90, 90, 90);
+  border-top: 1px solid rgb(90, 90, 90);
+  /* border-bottom: 1px solid rgb(90, 90, 90); */
+}
+.search-add-skills .result-techs {
+  border-bottom: 1px solid rgb(90, 90, 90);
+}
+
+.search-add-skills input[type="checkbox"],
+.search-add-skills input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.search-add-skills table {
+  width: 100%;
+}
+
+.search-add-skills input[type="checkbox"],
+.search-add-skills input[type="radio"] {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.search-add-skills .box-with-border {
+  padding: 5px 0;
+  border: 1px solid rgb(219, 216, 216);
+  border-bottom: 0;
+}
+
+.search-add-skills .bottom-border {
+  border-bottom: 1px solid rgb(219, 216, 216);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.search-add-skills .actions {
+  float: right;
+  margin-top: 2rem;
+}
+
+.search-add-skills table {
+  width: 100%;
+}
+
+.search-add-skills table tr:first-child {
+  border-top: 0 !important;
+}
+
+.search-add-skills table tr {
+  border: 1px solid rgb(219, 216, 216);
+  border-bottom: 0;
+  border-right: 0px;
+  font-size: 12px;
+}
+
+.search-add-skills table td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.search-add-skills select {
+  width: 205px;
+}
+
+.search-add-skills button {
+  background-color: #124b8b;
+  border: 0 solid #dedede;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 13px;
+  padding: 3px 10px;
+}
+
+.search-add-skills button[type="reset"] {
+  margin-left: 15px;
+}
+
+.search-add-skills label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.search-add-skills .mat-mdc-paginator {
+  background-color: #124b8b;
+  border: 0 solid #dedede;
+  margin-top: 10px;
+  min-height: 45px !important;
+}
+
+.search-add-skills .danger {
+  color: red;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 5px;
+}

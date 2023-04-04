@@ -1,0 +1,73 @@
+<section class="mt-4 default-add-skils-section" [formGroup]="skillsForm">
+  <div class="row m-0 mt-1 box-with-border">
+    <div class="col-2">
+      <label for="">Employee</label>
+    </div>
+    <div class="col-6">
+      <input class="" placeholder="Employee name" type="text" formControlName="empName">
+      <span class="danger" *ngIf="skillsForm?.controls?.['empName']?.invalid && 
+      (skillsForm?.controls?.['empName']?.dirty || skillsForm?.controls?.['empName']?.touched)">
+        Name cannot be empty</span>
+    </div>
+  </div>
+  <div class="row m-0  box-with-border">
+    <div class="col-2">
+      <label for="">Practice</label>
+    </div>
+    <div class="col-6">
+      <select title="practice" class="" formControlName="practice">
+        <option value="" disabled selected hidden>Select</option>
+        <option *ngFor="let value of practices" value={{value.c}}>{{value.n}}</option>
+      </select>
+      <span class="danger" *ngIf="skillsForm?.controls?.['practice']?.invalid && 
+      (skillsForm?.controls?.['practice']?.dirty || skillsForm?.controls?.['practice']?.touched)">
+        Practice cannot be empty</span>
+    </div>
+  </div>
+  <div class="row m-0  box-with-border">
+    <div class="col-2">
+      <label for="">Category</label>
+    </div>
+    <div class="col-6">
+      <select title="category" class="" formControlName="category">
+        <option value="" disabled selected hidden>Select</option>
+        <option *ngFor="let value of categories" value={{value.c}}>{{value.n}}</option>
+      </select>
+      <span class="danger" *ngIf="skillsForm?.controls?.['category']?.invalid && 
+      (skillsForm?.controls?.['category']?.dirty || skillsForm?.controls?.['category']?.touched)">
+        Category cannot be empty</span>
+    </div>
+  </div>
+  <div class="row m-0 box-with-border bottom-border no-left-border p-0">
+    <div class="col-2" [ngClass]="!techStacks.length ? 'mb-2 mt-2' : ''">
+      <label for="">Tech Stack</label>
+    </div>
+    <div class="col-10 p-0" *ngIf="skillsForm?.controls?.['category']?.value">
+      <table>
+        <tr *ngFor="let tech of techStacks">
+          <td>
+            <input type="checkbox" name="" id="{{tech.c}}" value="{{tech.c}}" (click)="selectTech(tech)">
+            <span>{{tech.n}}</span>
+          </td>
+          <td *ngFor="let level of expertLevels">
+            <input type="radio" name="{{tech.c}}" id="" value="{{level.c}}" [disabled]="!tech.isSelected"
+              (click)="selectExpertLevel(tech,level)">
+            <span>{{level.n}}</span>
+          </td>
+        </tr>
+      </table>
+      <span class="danger" *ngIf="showTechStackValidationError">
+        Tech stack cannot be empty</span>
+      <span class="danger" *ngIf="showExpertLevelMissingError">
+        Expert level cannot be empty</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="actions">
+        <button type="submit" (click)="submitSkill()">Save</button>
+        <button type="reset" (click)="resetSkills()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</section>

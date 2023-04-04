@@ -1,0 +1,37 @@
+.add-skill-wrapper {
+    margin: 1rem;
+}
+.add-skill-wrapper .actions {
+    margin-left: 2rem;
+}
+.add-skill-wrapper .search-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+.add-skill-wrapper .title {
+    color: grey;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.add-skill-wrapper button {
+    background-color: #124b8b;
+    border: 0 solid #dedede;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    padding: 3px;
+}
+.add-skill-wrapper button[type="reset"] {
+    margin-left: 15px;
+}
+.add-skill-wrapper .danger{
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.add-skill-wrapper input::placeholder,
+.add-skill-wrapper input,
+.add-skill-wrapper .no-results-msg{
+    font-size: 12px;
+  }

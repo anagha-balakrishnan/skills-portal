@@ -1,0 +1,72 @@
+<section class="search-add-skills">
+  <section *ngIf="searchResult?.length">
+    <div class="row m-0 box-with-border">
+      <div class="col-2">
+        <label for="">Employee</label>
+      </div>
+      <div class="col-6">
+        <input class="" *ngIf="loggedinUser" placeholder="Employee name" type="text" disabled="true" value="{{loggedinUser.empName}}">
+      </div>
+    </div>
+    <section class="result-techs">
+      <div class="result-box" *ngFor="let result of searchResult | slice : paginatorConfig.startIndex : paginatorConfig.endIndex">
+        <div class="row m-0 box-with-border">
+          <div class="col-2">
+            <label for="">Skills Group:</label>
+          </div>
+          <div class="col-6">
+            <span>{{result.skillGroupName}}</span>
+          </div>
+        </div>
+        <div class="row m-0 box-with-border">
+          <div class="col-2">
+            <label for="">Category</label>
+          </div>
+          <div class="col-6">
+            <span>{{result.categoryName}}</span>
+          </div>
+        </div>
+        <div class="row m-0 box-with-border no-left-border bottom-border p-0">
+          <div class="col-2">
+            <label for="">Skills</label>
+          </div>
+          <div class="col-10 p-0">
+            <table>
+              <tr *ngFor="let tech of result.techStacks">
+                <td>
+                  <input type="checkbox" name="{{tech.c}}" value="{{tech.c}}" [checked]="tech.isSelected"
+                    (click)="selectTech(tech, result)">
+                  <span>{{tech.n}}</span>
+                </td>
+                <td *ngFor="let level of expertLevels">
+                  <input type="radio" name="{{result.id+'_'+tech.c}}" id="" value="{{level.c}}"
+                    [checked]="level | levelChecked : tech : selectedTechStacks" [disabled]="!tech.isSelected"
+                    (click)="selectExpertLevel(tech,level, result)">
+                  <span>{{level.n}}</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <span class="danger" *ngIf="showTechStackValidationError">
+      Tech stack cannot be empty</span>
+    <span class="danger" *ngIf="showExpertLevelMissingError">
+      Expert level cannot be empty</span>
+    <div class="row">
+      <div class="col-12">
+        <mat-paginator [length]="searchResult.length" pageSize="pageSize" (page)="getPaginatorData($event)"
+          [pageSizeOptions]="[pageSize]"></mat-paginator>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="actions">
+          <button type="submit" (click)="submitSkill()">Save</button>
+          <button type="reset" (click)="cancelSearch()">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <section>
+    </section>

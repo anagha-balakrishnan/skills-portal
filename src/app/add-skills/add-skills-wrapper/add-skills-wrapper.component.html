@@ -1,0 +1,33 @@
+<section class="add-skill-wrapper">
+  <label class="title">{{pageTitle}}</label>
+  <section [formGroup]="searchForm" id="searchForm">
+    <section class="search-section">
+      <div class="">
+        <input class="search-input" formControlName="searchQuery" placeholder="Enter skills to search" type="text">
+      </div>
+      <div class="actions">
+        <button type="submit" id="submit" (click)="searchSkill()">Search Skills</button>
+        <button type="reset" id="reset" (click)="resetSearchForm()">Reset</button>
+      </div>
+    </section>
+    <div id="valid-string-error" *ngIf="(searchForm?.controls?.['searchQuery']?.errors?.['invalid'] || searchForm?.controls?.['searchQuery']?.errors?.['required']) && 
+    (searchForm?.controls?.['searchQuery']?.dirty || searchForm?.controls?.['searchQuery']?.touched)" class="danger">
+      {{validStringErr}}</div>
+    <div id="minimum-validation-error" *ngIf="!(searchForm?.controls?.['searchQuery']?.errors?.['invalid']) && (searchForm?.controls?.['searchQuery']?.errors?.['minlength'] && 
+    (searchForm?.controls?.['searchQuery']?.dirty || searchForm?.controls?.['searchQuery']?.touched))" class="danger">
+      To search, a word should be of 3 letters or more.</div>
+  </section>
+  <section *ngIf="showDefaultAddSkills && !noResultsMsg">
+    <app-default-add-skills></app-default-add-skills>
+  </section>
+  <section *ngIf="!showDefaultAddSkills && !noResultsMsg">
+    <app-search-add-skills [searchResult]="searchResult" [expertLevels]="expertLevels"
+      (onCancel)="onCancelofSearch($event)" [loggedinUser]="loggedInUser">
+    </app-search-add-skills>
+  </section>
+  <span *ngIf="noResultsMsg" class="no-results-msg">
+    No matching skills found. <br>
+    Please send a mail to SkillsMgmtSupport@winwire.com to add the desired skills.
+  </span>
+  <ngx-loading [show]="showLoader"></ngx-loading>
+</section>
